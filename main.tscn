@@ -90,6 +90,7 @@ material = SubResource("StandardMaterial3D_qrcx8")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1973, 6.659, 4.46397)
+layers = 3
 light_color = Color(0.901961, 0.6, 0, 1)
 light_energy = 5.4
 light_indirect_energy = 7.363
@@ -108,6 +109,7 @@ skeleton = NodePath("")
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.137047, 3.81831, -7.97512)
+layers = 3
 light_color = Color(0.901961, 0.6, 0, 1)
 light_energy = 5.4
 light_indirect_energy = 7.363
@@ -120,6 +122,25 @@ omni_range = 12.746
 omni_attenuation = 1.62451
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Map/OmniLight3D2"]
+layers = 524288
+mesh = SubResource("SphereMesh_qpcap")
+skeleton = NodePath("")
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.137047, 16.3429, -0.383874)
+layers = 3
+light_color = Color(0.764706, 0.670588, 1, 1)
+light_energy = 5.4
+light_indirect_energy = 7.363
+light_volumetric_fog_energy = 0.0
+light_size = 1.0
+light_specular = 1.94
+shadow_enabled = true
+shadow_reverse_cull_face = true
+omni_range = 89.436
+omni_attenuation = 0.683022
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/OmniLight3D3"]
 layers = 524288
 mesh = SubResource("SphereMesh_qpcap")
 skeleton = NodePath("")

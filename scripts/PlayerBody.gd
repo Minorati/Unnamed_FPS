@@ -9,6 +9,7 @@ const SENSITIVITY = 0.001
 @onready var head = $Head
 @onready var camera = $Head/Camera
 @onready var body = $Player
+@onready var guncamera = $Head/Camera/SubViewportContainer/SubViewport/GunCamera
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -21,6 +22,8 @@ func _unhandled_input(event):
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 
+func _process(delta):
+	guncamera.global_transform = camera.global_transform
 
 func _physics_process(delta):
 	# Add the gravity.
