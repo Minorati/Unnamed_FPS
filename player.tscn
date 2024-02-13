@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm1gi8ajvq6fi"]
+[gd_scene load_steps=6 format=3 uid="uid://bm1gi8ajvq6fi"]
 
 [ext_resource type="Script" path="res://scripts/PlayerBody.gd" id="1_kfe5n"]
 [ext_resource type="ArrayMesh" uid="uid://c0efd0f7takl5" path="res://firstSG.obj" id="2_1mxm2"]
+[ext_resource type="Texture2D" uid="uid://dj0m6wx7r68xl" path="res://assets/textures/crosshair.png" id="3_05hp0"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_berde"]
 
@@ -10,20 +11,22 @@ points = PackedVector3Array(-0.5, -1, 0, -0.497651, -1, -0.0490407, -0.497651, -
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_kfe5n")
+BOB_AMPLITUDE = 0.09
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.10799, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 1.11071, 0)
 mesh = SubResource("CylinderMesh_berde")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96158, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("ConvexPolygonShape3D_bnce4")
 
 [node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="Camera" type="Camera3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.83334, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.328988, 0)
 cull_mask = 1048573
 fov = 78.0
 
@@ -42,6 +45,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
+metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="Head/Camera/SubViewportContainer"]
 transparent_bg = true
@@ -50,7 +54,23 @@ canvas_cull_mask = 4293918722
 size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
+[node name="TextureRect" type="TextureRect" parent="Head/Camera/SubViewportContainer/SubViewport"]
+light_mask = 0
+visibility_layer = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -32.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_05hp0")
+expand_mode = 1
+stretch_mode = 3
+
 [node name="GunCamera" type="Camera3D" parent="Head/Camera/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81303, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01656, 0)
 cull_mask = 2
 fov = 78.0
