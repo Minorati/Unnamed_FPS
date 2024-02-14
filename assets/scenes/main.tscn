@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0snsrew4h6p1"]
+[gd_scene load_steps=10 format=3 uid="uid://b6waogdhjj3fq"]
 
 [ext_resource type="Texture2D" uid="uid://cv8ijd336rmin" path="res://assets/textures/bricks.png" id="1_qdvui"]
 [ext_resource type="Texture2D" uid="uid://bjjc4qax2uvcl" path="res://assets/textures/planks.png" id="1_squm7"]
+[ext_resource type="PackedScene" uid="uid://bm1gi8ajvq6fi" path="res://player.tscn" id="3_qe8im"]
 [ext_resource type="PackedScene" uid="uid://bdtjmruwkytye" path="res://pause_menu.tscn" id="3_rd12v"]
+[ext_resource type="PackedScene" uid="uid://cris0yytqt72p" path="res://sword.blend" id="5_f5q2f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifcmb"]
 albedo_texture = ExtResource("1_squm7")
@@ -147,3 +149,10 @@ skeleton = NodePath("")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_rd12v")]
 visible = false
+
+[node name="Player" parent="." instance=ExtResource("3_qe8im")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0903798, 2.3618, 0.148314)
+floor_constant_speed = true
+
+[node name="sword" parent="." instance=ExtResource("5_f5q2f")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 4.99657, 2.87919, 0.0396099)

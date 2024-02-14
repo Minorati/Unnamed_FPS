@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c0efd0f7takl5"
+path="res://.godot/imported/firstSG.obj-06e9ae77cb687c9b393bc4a56ec056fe.mesh"
+
+[deps]
+
+files=["res://.godot/imported/firstSG.obj-06e9ae77cb687c9b393bc4a56ec056fe.mesh"]
+
+source_file="res://assets/models/firstSG.obj"
+dest_files=["res://.godot/imported/firstSG.obj-06e9ae77cb687c9b393bc4a56ec056fe.mesh", "res://.godot/imported/firstSG.obj-06e9ae77cb687c9b393bc4a56ec056fe.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
