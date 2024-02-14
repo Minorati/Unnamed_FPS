@@ -32,9 +32,13 @@ func _ready():
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
-		head.rotate_y(-event.relative.x * SENSITIVITY)
-		camera.rotate_x(-event.relative.y * SENSITIVITY)
+		var y_rotation = -event.relative.x * SENSITIVITY
+		var x_rotation = -event.relative.y * SENSITIVITY
 
+		head.rotate_y(y_rotation)
+		camera.rotate_x(x_rotation)
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+		
 
 func _process(delta):
 	# TODO: move this to _ready, and attach viewmodel camera to main camera
@@ -51,8 +55,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	# Handle movement
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -64,34 +67,26 @@ func _physics_process(delta):
 			ACCELERATION_CURRENT = 1
 		velocity.x = ACCELERATION_CURRENT * (direction.x * SPEED)
 		velocity.z = ACCELERATION_CURRENT * (direction.z * SPEED)
-
-		print(input_dir)
-
-		_headroll(input_dir, delta)
-		_headbob(input_dir, delta)
 	else:
 		ACCELERATION_CURRENT = 0
-		camera.global_rotation.z = 0
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-		# TODO: is this too sudden of a change?
-		t_bob = 0
-		HEAD_ROLL = 0
-		# camera.transform.origin = _headbob(t_bob)
 
+	_headroll(input_dir, delta)
+	_headbob(input_dir, delta)
 	move_and_slide()
 
 
+# REFACTOR:
 func _headbob(dir, delta) -> void:
-	# REFACTOR:
 	var pos = Vector3.ZERO
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	pos.y = sin(t_bob * BOB_FREQUENCY) * BOB_AMPLITUDE
 	camera.transform.origin = pos
 
+# REFACTOR:
 func _headroll(dir, delta) -> void:
-	# REFACTOR:
 	const roll_max = 0.03
 	HEAD_ROLL = HEAD_ROLL_MULT * -dir.x * roll_max
-	camera.global_rotation.z = HEAD_ROLL
+	head.global_rotation.z = HEAD_ROLL
 	HEAD_ROLL = 0
