@@ -1,0 +1,96 @@
+[gd_scene load_steps=5 format=3 uid="uid://cy3n27c1ssriv"]
+
+[ext_resource type="Texture2D" uid="uid://dj0m6wx7r68xl" path="res://assets/textures/crosshair.png" id="1_lx8sw"]
+[ext_resource type="Script" path="res://scripts/UI Scripts/PlayerHUD.gd" id="2_43ajs"]
+[ext_resource type="PackedScene" uid="uid://bhiq4au5fr8vd" path="res://assets/scenes/UI Scenes/UIContainer.tscn" id="3_d3ig1"]
+[ext_resource type="Script" path="res://scripts/UI Scripts/UI_values.gd" id="4_kdgqu"]
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="TextureRect" parent="."]
+light_mask = 0
+visibility_layer = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_lx8sw")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="PlayerHUD" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -100.0
+offset_right = 300.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+script = ExtResource("2_43ajs")
+
+[node name="HealthContainer" parent="PlayerHUD" instance=ExtResource("3_d3ig1")]
+layout_mode = 2
+
+[node name="Health" type="Label" parent="PlayerHUD/HealthContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.960784, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 50
+text = "Health"
+
+[node name="ArmorContainer" parent="PlayerHUD" instance=ExtResource("3_d3ig1")]
+layout_mode = 2
+
+[node name="Armor" type="Label" parent="PlayerHUD/ArmorContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.368627, 0.109804, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 50
+text = "Armor"
+
+[node name="AmmoContainer" parent="PlayerHUD" instance=ExtResource("3_d3ig1")]
+layout_mode = 2
+
+[node name="Ammo" type="Label" parent="PlayerHUD/AmmoContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.878431, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 50
+text = "Ammo"
+
+[node name="DevilTriggerContainer" parent="PlayerHUD" instance=ExtResource("3_d3ig1")]
+layout_mode = 2
+
+[node name="DevilTrigger" type="Label" parent="PlayerHUD/DevilTriggerContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.756863, 0.278431, 0.960784, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 50
+text = "DT"
+
+[node name="UI_Values" type="Node" parent="."]
+script = ExtResource("4_kdgqu")
