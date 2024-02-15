@@ -11,4 +11,4 @@ func _process(delta):
 	pass
 
 func _unhandled_key_input(event):
-	print(event)
+	pass
