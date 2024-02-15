@@ -1,27 +1,42 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3dvmp5q8unxw"]
+[gd_scene load_steps=9 format=3 uid="uid://d3dvmp5q8unxw"]
 
 [ext_resource type="Script" path="res://scripts/PlayerBody.gd" id="1_kfe5n"]
-[ext_resource type="ArrayMesh" uid="uid://c0efd0f7takl5" path="res://assets/models/firstSG.obj" id="2_1mxm2"]
+[ext_resource type="ArrayMesh" uid="uid://c0efd0f7takl5" path="res://assets/models/Model_DBS.obj" id="2_1mxm2"]
 [ext_resource type="Script" path="res://Weapon_Shotgun.gd" id="3_1dgbn"]
 [ext_resource type="PackedScene" uid="uid://cy3n27c1ssriv" path="res://assets/scenes/UI Scenes/playerUI.tscn" id="4_4vey3"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_berde"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bnce4"]
-points = PackedVector3Array(-0.5, -1, 0, -0.497651, -1, -0.0490407, -0.497651, -1, 0.0489429, -0.5, 1, 0, -0.490407, -1, -0.097592, -0.497651, 1, -0.0490407, -0.490407, -1, 0.0974941, -0.497651, 1, 0.0489429, -0.478563, -1, -0.145164, -0.490407, 1, -0.097592, -0.478563, -1, 0.145067, -0.490407, 1, 0.0974941, -0.46202, -1, -0.191366, -0.478563, 1, -0.145164, -0.46202, -1, 0.191269, -0.478563, 1, 0.145067, -0.440975, -1, -0.235709, -0.46202, 1, -0.191366, -0.440975, -1, 0.235611, -0.46202, 1, 0.191269, -0.415818, -1, -0.2778, -0.440975, 1, -0.235709, -0.415818, -1, 0.277702, -0.440975, 1, 0.235611, -0.386551, -1, -0.317247, -0.415818, 1, -0.2778, -0.386551, -1, 0.31715, -0.415818, 1, 0.277702, -0.353563, -1, -0.353563, -0.386551, 1, -0.317247, -0.353563, -1, 0.353465, -0.386551, 1, 0.31715, -0.317247, -1, -0.386551, -0.353563, 1, -0.353563, -0.317247, -1, 0.386453, -0.353563, 1, 0.353465, -0.2778, -1, -0.415818, -0.317247, 1, -0.386551, -0.2778, -1, 0.41572, -0.317247, 1, 0.386453, -0.235709, -1, -0.440975, -0.2778, 1, -0.415818, -0.235709, -1, 0.440877, -0.2778, 1, 0.41572, -0.191366, -1, -0.46202, -0.235709, 1, -0.440975, -0.191366, -1, 0.461922, -0.235709, 1, 0.440877, -0.145164, -1, -0.478563, -0.191366, 1, -0.46202, -0.145164, -1, 0.478465, -0.191366, 1, 0.461922, -0.097592, -1, -0.490407, -0.145164, 1, -0.478563, -0.097592, -1, 0.490309, -0.145164, 1, 0.478465, -0.0490407, -1, -0.497651, -0.097592, 1, -0.490407, -0.0490407, -1, 0.497553, -0.097592, 1, 0.490309, 0, -1, -0.5, -0.0490407, 1, -0.497651, 0, -1, 0.5, -0.0490407, 1, 0.497553, 0.0489429, -1, -0.497651, 0, 1, -0.5, 0.0489429, -1, 0.497553, 0, 1, 0.5, 0.0974941, -1, -0.490407, 0.0489429, 1, -0.497651, 0.0974941, -1, 0.490309, 0.0489429, 1, 0.497553, 0.145067, -1, -0.478563, 0.0974941, 1, -0.490407, 0.145067, -1, 0.478465, 0.0974941, 1, 0.490309, 0.191269, -1, -0.46202, 0.145067, 1, -0.478563, 0.191269, -1, 0.461922, 0.145067, 1, 0.478465, 0.235611, -1, -0.440975, 0.191269, 1, -0.46202, 0.235611, -1, 0.440877, 0.191269, 1, 0.461922, 0.277702, -1, -0.415818, 0.235611, 1, -0.440975, 0.277702, -1, 0.41572, 0.235611, 1, 0.440877, 0.31715, -1, -0.386551, 0.277702, 1, -0.415818, 0.31715, -1, 0.386453, 0.277702, 1, 0.41572, 0.353465, -1, -0.353563, 0.31715, 1, -0.386551, 0.353465, -1, 0.353465, 0.31715, 1, 0.386453, 0.386453, -1, -0.317247, 0.353465, 1, -0.353563, 0.386453, -1, 0.31715, 0.353465, 1, 0.353465, 0.41572, -1, -0.2778, 0.386453, 1, -0.317247, 0.41572, -1, 0.277702, 0.386453, 1, 0.31715, 0.440877, -1, -0.235709, 0.41572, 1, -0.2778, 0.440877, -1, 0.235611, 0.41572, 1, 0.277702, 0.461922, -1, -0.191366, 0.440877, 1, -0.235709, 0.461922, -1, 0.191269, 0.440877, 1, 0.235611, 0.478465, -1, -0.145164, 0.461922, 1, -0.191366, 0.478465, -1, 0.145067, 0.461922, 1, 0.191269, 0.490309, -1, -0.097592, 0.478465, 1, -0.145164, 0.490309, -1, 0.0974941, 0.478465, 1, 0.145067, 0.497553, -1, -0.0490407, 0.490309, 1, -0.097592, 0.497553, -1, 0.0489429, 0.490309, 1, 0.0974941, 0.5, -1, 0, 0.497553, 1, -0.0490407, 0.497553, 1, 0.0489429, 0.5, 1, 0)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_exfln"]
+height = 0.667556
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_q10wh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kr2pn"]
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 2
 script = ExtResource("1_kfe5n")
-BOB_AMPLITUDE = 0.09
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Model_Player" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 1.11071, 0)
 mesh = SubResource("CylinderMesh_berde")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("ConvexPolygonShape3D_bnce4")
+[node name="Can_Stand" type="Area3D" parent="."]
+transform = Transform3D(1.5456, 0, 0, 0, 1.5456, 0, 0, 0, 1.5456, 0, 1.70462, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Can_Stand"]
+transform = Transform3D(0.654494, 0, 0, 0, 0.654494, 0, 0, 0, 0.654494, 0, 0, 0)
+shape = SubResource("CylinderShape3D_exfln")
+
+[node name="Crouch_Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21823, 0)
+shape = SubResource("SphereShape3D_q10wh")
+
+[node name="Stand_Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06368, 0)
+shape = SubResource("CapsuleShape3D_kr2pn")
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
@@ -31,7 +46,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0623915, 0)
 cull_mask = 1048573
 fov = 78.0
 
-[node name="FirstSg" type="MeshInstance3D" parent="Head/Camera"]
+[node name="Model_DBS" type="MeshInstance3D" parent="Head/Camera"]
 transform = Transform3D(0.315, 0, 0, 0, 0.315, 0, 0, 0, 0.315, 0.280969, -0.848276, -1.0944)
 layers = 2
 mesh = ExtResource("2_1mxm2")
@@ -40,6 +55,7 @@ script = ExtResource("3_1dgbn")
 
 [node name="PlayerUI" parent="Head/Camera" instance=ExtResource("4_4vey3")]
 z_index = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Head/Camera"]
 light_mask = 3
