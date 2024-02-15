@@ -8,8 +8,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#if Input.is_action_just_pressed("mb1"):
+		#print("click")
 	pass
 
-func _unhandled_key_input(event):
-	if event is InputEventMouseButton:
-		print("clicked a mouse button")
+func attack():
+	print("attacked")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/PlayerBody.gd" id="1_kfe5n"]
 [ext_resource type="ArrayMesh" uid="uid://c0efd0f7takl5" path="res://assets/models/Model_DBS.obj" id="2_1mxm2"]
-[ext_resource type="Script" path="res://Weapon_Shotgun.gd" id="3_1dgbn"]
+[ext_resource type="Script" path="res://scripts/Weapon_Shotgun.gd" id="3_u7uy3"]
 [ext_resource type="PackedScene" uid="uid://cy3n27c1ssriv" path="res://assets/scenes/UI Scenes/playerUI.tscn" id="4_4vey3"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_berde"]
@@ -51,7 +51,7 @@ transform = Transform3D(0.315, 0, 0, 0, 0.315, 0, 0, 0, 0.315, 0.280969, -0.8482
 layers = 2
 mesh = ExtResource("2_1mxm2")
 skeleton = NodePath("../../..")
-script = ExtResource("3_1dgbn")
+script = ExtResource("3_u7uy3")
 
 [node name="PlayerUI" parent="Head/Camera" instance=ExtResource("4_4vey3")]
 z_index = 1
