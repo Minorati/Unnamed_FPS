@@ -4,6 +4,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
+	resume()
 	pass # Replace with function body.
 
 func resume():
@@ -28,7 +29,7 @@ func _on_resume_pressed():
 	pass # Replace with function body.
 
 func _on_restart_pressed():
-	print("restart WIP")
+	get_tree().reload_current_scene()
 	pass # Replace with function body.
 
 func _on_quit_pressed():
