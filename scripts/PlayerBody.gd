@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED: float = 6.0
+const SPEED: float = 7.0
 const JUMP_VELOCITY: float = 4.5
 const SENSITIVITY: float = 0.001
 
@@ -19,6 +19,7 @@ var PREV_STATE = PLAYER_STATE
 @export var BOB_FREQ: float = 2.2
 @export var BOB_AMP: float = 0.08
 var t_bob: float = 0.0
+var v_bob: float = 0.0
 
 # Camera rolling
 @export var HEAD_ROLL: float = 0
@@ -30,7 +31,8 @@ var t_bob: float = 0.0
 
 @onready var head = $Head
 @onready var camera = $Head/Camera
-@onready var guncamera = $Head/Camera/SubViewportContainer/SubViewport/GunCamera
+@onready var viewmodel_camera = $Head/Camera/SubViewportContainer/SubViewport/ViewmodelCamera
+@onready var DBS_viewmodel = $Head/Camera/Model_DBS
 
 @onready var stand_collider = $Stand_Collider
 @onready var crouch_collider = $Crouch_Collider
@@ -59,7 +61,7 @@ func _unhandled_input(event) -> void:
 
 
 func _process(delta) -> void:
-	guncamera.global_transform = camera.global_transform
+	viewmodel_camera.global_transform = camera.global_transform
 
 
 func action_jump(delta, state) -> void:
@@ -113,11 +115,19 @@ func action_move(delta, state, direction) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
+func viewmodel_bob(weapon, delta):
+	var original_pos = 0.18
+	# transform.origin.xyz is the position relative to its parent
+	var amp = 0.02
+	var freq = 0.6
+	v_bob += delta * velocity.length()
+	var new_pos = amp * sin(v_bob  * freq) + original_pos
+	weapon.transform.origin.x = new_pos
+
 func _physics_process(delta) -> void:
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	var state = PLAYER_STATE
-	print(can_stand_collider.get_overlapping_bodies())
 
 	# Handle jump.
 	action_jump(delta, state)
@@ -135,6 +145,7 @@ func _physics_process(delta) -> void:
 	# Camera effects
 	camera_headroll(input_dir, delta)
 	camera_headbob(input_dir, delta)
+	viewmodel_bob(DBS_viewmodel, delta)
 
 	# Move player and calculate collision
 	move_and_slide()

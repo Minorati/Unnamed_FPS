@@ -75,7 +75,7 @@ canvas_cull_mask = 4293918722
 size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
-[node name="GunCamera" type="Camera3D" parent="Head/Camera/SubViewportContainer/SubViewport"]
+[node name="ViewmodelCamera" type="Camera3D" parent="Head/Camera/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7391, 0)
 cull_mask = 2
 fov = 78.0
