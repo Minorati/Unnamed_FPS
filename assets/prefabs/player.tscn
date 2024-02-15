@@ -24,7 +24,7 @@ mesh = SubResource("CylinderMesh_berde")
 skeleton = NodePath("")
 
 [node name="Can_Stand" type="Area3D" parent="."]
-transform = Transform3D(1.5456, 0, 0, 0, 1.5456, 0, 0, 0, 1.5456, 0, 1.70462, 0)
+transform = Transform3D(1.49441, 0, 0, 0, 1.77569, 0, 0, 0, 1.49441, 0, 1.70462, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Can_Stand"]
 transform = Transform3D(0.654494, 0, 0, 0, 0.654494, 0, 0, 0, 0.654494, 0, 0, 0)
