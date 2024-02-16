@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://fj32x3hkkmhb"]
+[gd_scene load_steps=7 format=3 uid="uid://fj32x3hkkmhb"]
 
 [ext_resource type="PackedScene" uid="uid://d3dvmp5q8unxw" path="res://assets/prefabs/player.tscn" id="1_us2by"]
+[ext_resource type="Texture2D" uid="uid://bjjc4qax2uvcl" path="res://assets/textures/planks.png" id="1_vnwfo"]
 [ext_resource type="PackedScene" uid="uid://bdwniqs6oqpoc" path="res://assets/prefabs/hp_vial.tscn" id="2_2bsg0"]
 [ext_resource type="PackedScene" uid="uid://dpx3qseoaxjhx" path="res://assets/prefabs/negative_hp_vial.tscn" id="3_bt4ao"]
 [ext_resource type="PackedScene" uid="uid://bdtjmruwkytye" path="res://pause_menu.tscn" id="4_cb2w5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ubvh"]
+albedo_texture = ExtResource("1_vnwfo")
+uv1_triplanar = true
 
 [node name="pickupTestingWorld" type="Node3D"]
 
@@ -12,6 +17,7 @@
 [node name="Platform" type="CSGCylinder3D" parent="Map"]
 transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
 use_collision = true
+material = SubResource("StandardMaterial3D_6ubvh")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000870228, 33.1962, 0.090189)
