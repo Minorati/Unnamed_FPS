@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cy3n27c1ssriv"]
 
-[ext_resource type="Texture2D" uid="uid://dj0m6wx7r68xl" path="res://assets/textures/crosshair.png" id="1_lx8sw"]
-[ext_resource type="Script" path="res://scripts/UI Scripts/PlayerHUD.gd" id="2_43ajs"]
-[ext_resource type="PackedScene" uid="uid://bhiq4au5fr8vd" path="res://assets/scenes/UI Scenes/UIContainer.tscn" id="3_d3ig1"]
-[ext_resource type="Script" path="res://scripts/UI Scripts/UI_values.gd" id="4_kdgqu"]
+[ext_resource type="Texture2D" uid="uid://dj0m6wx7r68xl" path="res://assets/textures/crosshair.png" id="1_l7owt"]
+[ext_resource type="Script" path="res://scripts/HUD Scripts/PlayerHUD.gd" id="2_oq1cb"]
+[ext_resource type="PackedScene" uid="uid://bhiq4au5fr8vd" path="res://assets/scenes/HUD Scenes/HUDContainer.tscn" id="3_rh70b"]
+[ext_resource type="Script" path="res://scripts/HUD Scripts/HUD_values.gd" id="4_gv87h"]
 
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
@@ -28,7 +28,7 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_lx8sw")
+texture = ExtResource("1_l7owt")
 expand_mode = 1
 stretch_mode = 3
 
@@ -45,9 +45,9 @@ offset_right = 300.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
-script = ExtResource("2_43ajs")
+script = ExtResource("2_oq1cb")
 
-[node name="HealthContainer" parent="PlayerHUD" instance=ExtResource("3_d3ig1")]
+[node name="HealthContainer" parent="PlayerHUD" instance=ExtResource("3_rh70b")]
 layout_mode = 2
 
 [node name="Health" type="Label" parent="PlayerHUD/HealthContainer"]
@@ -59,7 +59,7 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 50
 text = "Health"
 
-[node name="ArmorContainer" parent="PlayerHUD" instance=ExtResource("3_d3ig1")]
+[node name="ArmorContainer" parent="PlayerHUD" instance=ExtResource("3_rh70b")]
 layout_mode = 2
 
 [node name="Armor" type="Label" parent="PlayerHUD/ArmorContainer"]
@@ -70,7 +70,7 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 50
 text = "Armor"
 
-[node name="AmmoContainer" parent="PlayerHUD" instance=ExtResource("3_d3ig1")]
+[node name="AmmoContainer" parent="PlayerHUD" instance=ExtResource("3_rh70b")]
 layout_mode = 2
 
 [node name="Ammo" type="Label" parent="PlayerHUD/AmmoContainer"]
@@ -81,7 +81,7 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 50
 text = "Ammo"
 
-[node name="DevilTriggerContainer" parent="PlayerHUD" instance=ExtResource("3_d3ig1")]
+[node name="DevilTriggerContainer" parent="PlayerHUD" instance=ExtResource("3_rh70b")]
 layout_mode = 2
 
 [node name="DevilTrigger" type="Label" parent="PlayerHUD/DevilTriggerContainer"]
@@ -92,5 +92,5 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 50
 text = "DT"
 
-[node name="UI_Values" type="Node" parent="."]
-script = ExtResource("4_kdgqu")
+[node name="HUD_Values" type="Node" parent="."]
+script = ExtResource("4_gv87h")

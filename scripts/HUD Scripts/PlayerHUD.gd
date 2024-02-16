@@ -5,7 +5,7 @@ extends HBoxContainer
 @onready var ammoLabel = $AmmoContainer/Ammo
 @onready var devilTriggerLabel = $DevilTriggerContainer/DevilTrigger
 
-@onready var values = $"../UI_Values"
+@onready var values = $"../HUD_Values"
 
 #Updates labels with values from UI_Values 
 

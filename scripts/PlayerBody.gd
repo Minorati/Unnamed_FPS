@@ -4,6 +4,12 @@ const SPEED: float = 7.0
 const JUMP_VELOCITY: float = 4.5
 const SENSITIVITY: float = 0.001
 
+#Player stats
+@export var health = 100
+@export var armor = 50
+@export var ammo =  2
+@export var devilTrigger = 50
+
 # Player states
 @export var IS_CROUCHING = false
 @export var IS_GROUNDED = true
@@ -31,6 +37,7 @@ var v_bob: float = 0.0
 
 @onready var head = $Head
 @onready var camera = $Head/Camera
+@onready var playerHUDValues = $Head/Camera/PlayerHUD/HUD_Values
 @onready var viewmodel_camera = $Head/Camera/SubViewportContainer/SubViewport/ViewmodelCamera
 @onready var wep_dbs = $Head/Camera/Model_DBS
 @onready var weapons_belt = [wep_dbs, wep_dbs]
@@ -51,6 +58,7 @@ func _ready() -> void:
 	can_stand_collider.monitoring = true
 
 
+
 func _unhandled_input(event) -> void:
 	if event is InputEventMouseMotion:
 		var y_rotation = -event.relative.x * SENSITIVITY
@@ -63,6 +71,11 @@ func _unhandled_input(event) -> void:
 
 func _process(delta) -> void:
 	viewmodel_camera.global_transform = camera.global_transform
+	
+	playerHUDValues.health = health
+	playerHUDValues.armor = armor
+	playerHUDValues.ammo = ammo
+	playerHUDValues.devilTrigger = devilTrigger
 
 func action_jump(delta, state) -> void:
 	if is_on_floor():
