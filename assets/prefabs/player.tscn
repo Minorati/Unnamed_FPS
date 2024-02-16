@@ -48,7 +48,6 @@ fov = 78.0
 
 [node name="Model_DBS" type="MeshInstance3D" parent="Head/Camera"]
 transform = Transform3D(0.315, 0, 0, 0, 0.315, 0, 0, 0, 0.315, 0.280969, -0.848276, -1.0944)
-layers = 2
 mesh = ExtResource("2_1mxm2")
 skeleton = NodePath("../../..")
 script = ExtResource("3_u7uy3")

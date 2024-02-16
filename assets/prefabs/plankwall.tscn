@@ -7,6 +7,5 @@ albedo_texture = ExtResource("1_nxe7u")
 uv1_triplanar = true
 
 [node name="plank_wall" type="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_uwi8k")
