@@ -1,0 +1,39 @@
+few levels
+"solid" gameplay
+
+mid-close range combat
+	somewhat tighter levels
+	something like OG quake
+
+find ways to incentivize using other weps
+	universal cooldown?
+	infinite reserve?
+	need new weps sometime soon (few)
+
+theming
+	various -ish
+
+command inputs that modify melee attacks
+	not interfere with ranged attacks
+	not interfere with movement
+
+core weapons
+	need
+
+melee
+	should be "generous"
+	very close range is not fun to press punches on
+	parry as a stance
+
+air control
+	do not have air friction or some
+
+enemies should range from fodder
+	to *jacked*
+	can be knowledge/experience checks (keep it simple-ish)
+
+maybe having a reason to use left and right strafe other than dodging
+
+weakspots? opening up enemies?
+	creating special openings instead of "this weapon does more/less dmg"
+
