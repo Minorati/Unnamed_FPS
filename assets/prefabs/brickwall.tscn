@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ictwcds5jv36"]
+
+[ext_resource type="Texture2D" uid="uid://cv8ijd336rmin" path="res://assets/textures/bricks.png" id="1_j12ih"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qrcx8"]
+albedo_texture = ExtResource("1_j12ih")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="brick_wall" type="CSGBox3D"]
+use_collision = true
+material = SubResource("StandardMaterial3D_qrcx8")
