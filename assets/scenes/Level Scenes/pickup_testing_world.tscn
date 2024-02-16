@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://fj32x3hkkmhb"]
+
+[ext_resource type="PackedScene" uid="uid://d3dvmp5q8unxw" path="res://assets/prefabs/player.tscn" id="1_us2by"]
+[ext_resource type="PackedScene" uid="uid://bdwniqs6oqpoc" path="res://assets/prefabs/hp_vial.tscn" id="2_2bsg0"]
+[ext_resource type="PackedScene" uid="uid://dpx3qseoaxjhx" path="res://assets/prefabs/negative_hp_vial.tscn" id="3_bt4ao"]
+[ext_resource type="PackedScene" uid="uid://bdtjmruwkytye" path="res://pause_menu.tscn" id="4_cb2w5"]
+
+[node name="pickupTestingWorld" type="Node3D"]
+
+[node name="Map" type="Node" parent="."]
+
+[node name="Platform" type="CSGCylinder3D" parent="Map"]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
+use_collision = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000870228, 33.1962, 0.090189)
+layers = 3
+light_color = Color(0.996078, 0.878431, 0.784314, 1)
+light_energy = 0.853
+light_size = 0.126
+shadow_enabled = true
+spot_range = 36.6554
+spot_attenuation = -0.5
+spot_angle_attenuation = 2.0
+
+[node name="Player" parent="." instance=ExtResource("1_us2by")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="HP_Vial" parent="." instance=ExtResource("2_2bsg0")]
+transform = Transform3D(0.904737, -0.42597, -0.000542583, 0.42597, 0.904737, 8.71992e-05, 0.000453757, -0.000310008, 1, 2, 1.296, -8.066)
+
+[node name="Negative_HP_Vial" parent="." instance=ExtResource("3_bt4ao")]
+transform = Transform3D(0.904737, -0.42597, -0.000542585, 0.42597, 0.904737, 8.71887e-05, 0.000453757, -0.000310008, 1, -2, 1.296, -8.066)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_cb2w5")]
+visible = false

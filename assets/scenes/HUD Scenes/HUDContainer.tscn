@@ -1,5 +1,5 @@
 [gd_scene format=3 uid="uid://bhiq4au5fr8vd"]
 
-[node name="UIContainer" type="MarginContainer"]
+[node name="HUDContainer" type="MarginContainer"]
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10

@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpx3qseoaxjhx"]
+[gd_scene load_steps=7 format=3 uid="uid://dpx3qseoaxjhx"]
 
+[ext_resource type="Script" path="res://scripts/hp_vial.gd" id="1_drkcl"]
 [ext_resource type="ArrayMesh" uid="uid://b6ltqvvkvfwu4" path="res://assets/models/Model_Vial.obj" id="1_fmclq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jj7hy"]
@@ -18,7 +19,12 @@ metallic = 1.0
 metallic_specular = 1.0
 roughness = 0.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_aa5qr"]
+size = Vector3(0.6, 0.6, 0.6)
+
 [node name="Negative_HP_Vial" type="Node3D"]
+script = ExtResource("1_drkcl")
+value = -25
 
 [node name="ModelVial" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_fmclq")
@@ -26,3 +32,15 @@ surface_material_override/0 = SubResource("StandardMaterial3D_jj7hy")
 surface_material_override/1 = SubResource("StandardMaterial3D_31hcj")
 surface_material_override/2 = SubResource("StandardMaterial3D_31hcj")
 surface_material_override/3 = SubResource("StandardMaterial3D_583i4")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+shape = SubResource("BoxShape3D_aa5qr")
+
+[node name="Recharge" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
