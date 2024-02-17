@@ -32,6 +32,7 @@ func _on_restart_pressed():
 	get_tree().reload_current_scene()
 	pass # Replace with function body.
 
+
 func _on_quit_pressed():
 	get_tree().quit()
 	pass # Replace with function body.
