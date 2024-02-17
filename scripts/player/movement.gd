@@ -22,11 +22,13 @@ func jump(delta, state, parent) -> void:
 		if state.is_grounded == false:
 			# print("landing")
 			state.is_grounded = true
+	else:
+		state.is_grounded = false
 
 	if state.is_grounded == true:
 		# print("jumping")
 		state.is_grounded = false
-	parent.velocity.y = JUMP_VELOCITY
+		parent.velocity.y = JUMP_VELOCITY
 
 # TODO: once stability is established, remove debug prints
 func move(delta, state, direction, parent) -> void:
@@ -53,7 +55,6 @@ func stop(delta, state, direction, parent) -> void:
 func crouch(delta, state, parent) -> void:
 	var stand_collider = parent.stand_collider
 	var crouch_collider = parent.crouch_collider
-	var can_stand_collider = parent.can_stand_collider
 
 	if state.is_crouching == false:
 		# print("crouching")
@@ -61,6 +62,7 @@ func crouch(delta, state, parent) -> void:
 	state.is_crouching = true
 	stand_collider.disabled = true
 	crouch_collider.disabled = false
+
 
 func stand(delta, state, parent) -> void:
 	var stand_collider = parent.stand_collider

@@ -3,7 +3,7 @@ extends CharacterBody3D
 # const SPEED: float = 7.0
 const JUMP_VELOCITY: float = 4.5
 const SENSITIVITY: float = 0.001
-const GRAVITY : float = 9.8
+const GRAVITY: float = 9.8
 
 #Player stats
 @export var health = 100
@@ -12,14 +12,17 @@ const GRAVITY : float = 9.8
 @export var devilTrigger = 50
 
 # Player states
-@export var IS_CROUCHING = false
-@export var IS_GROUNDED = true
-@export var IS_MOVING = false
+# @export var IS_CROUCHING = false
+# @export var IS_GROUNDED = true
+# @export var IS_MOVING = false
 #const STATE_TRANSITION_WINDOW = 1.0
 
-var PLAYER_STATE = {
-	"is_crouching": IS_CROUCHING, "is_grounded": IS_GROUNDED, "is_moving": IS_MOVING
-}
+# var PLAYER_STATE = {
+# 	"is_crouching": false,
+# 	"is_grounded": true,
+# 	"is_moving": false,
+# }
+# var state = PLAYER_STATE
 
 # TODO: clean this up
 @onready var head = $Head
@@ -37,12 +40,13 @@ var PLAYER_STATE = {
 @onready var can_stand_collider = $Can_Stand
 
 @onready var input_queue = $Input_Queue
+@onready var state = $State
+
 
 # On init
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	can_stand_collider.monitoring = true
-
 
 # Camera movement
 func _unhandled_input(event) -> void:
@@ -53,12 +57,6 @@ func _unhandled_input(event) -> void:
 		head.rotate_y(y_rotation)
 		camera.rotate_x(x_rotation)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
-
-
-# will eventually need to optimize and move input handling here instead of in the update funcs
-# TODO: potentially need to split inputs into keypress and keyrelease for optimization
-func _input(event):
-	pass
 
 
 func _process(delta) -> void:
@@ -75,12 +73,17 @@ func action_attack(delta, state, active_weapon):
 	active_weapon.attack()
 
 
+# TODO: Refactor so that the actions don't get called every update
 func _physics_process(delta) -> void:
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	var state = PLAYER_STATE
 
-	# TODO: Refactor so that the actions don't get called every update
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y -= GRAVITY * delta
+	else:
+		state.is_grounded = true
+
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
 		movement.jump(delta, state, self)
@@ -96,14 +99,15 @@ func _physics_process(delta) -> void:
 		movement.crouch(delta, state, self)
 	else:
 		movement.stand(delta, state, self)
+		if Input.is_action_just_released("crouch"):
+			print("just released crouch")
+	
+	
+	input_queue.receive_state(state)
 
 	# Handle attacking
 	# if Input.is_action_just_pressed("mb1"):
 	# 	action_attack(delta, state, current_weapon)
-
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= GRAVITY * delta
 
 	# Camera effects
 	camera.roll_and_bob(input_dir, delta, self)
