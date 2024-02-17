@@ -3,6 +3,7 @@ extends CharacterBody3D
 # const SPEED: float = 7.0
 const JUMP_VELOCITY: float = 4.5
 const SENSITIVITY: float = 0.001
+const GRAVITY : float = 9.8
 
 #Player stats
 @export var health = 100
@@ -35,9 +36,7 @@ var PLAYER_STATE = {
 @onready var crouch_collider = $Crouch_Collider
 @onready var can_stand_collider = $Can_Stand
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-# TODO: maybe separate player from npc gravity?
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+@onready var input_queue = $Input_Queue
 
 # On init
 func _ready() -> void:
@@ -54,6 +53,7 @@ func _unhandled_input(event) -> void:
 		head.rotate_y(y_rotation)
 		camera.rotate_x(x_rotation)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+
 
 # will eventually need to optimize and move input handling here instead of in the update funcs
 # TODO: potentially need to split inputs into keypress and keyrelease for optimization
@@ -86,24 +86,27 @@ func _physics_process(delta) -> void:
 		movement.jump(delta, state, self)
 
 	# Handle movement
-	movement.move(delta, state, direction, self)
+	if direction:
+		movement.move(delta, state, direction, self)
+	else:
+		movement.stop(delta, state, direction, self)
 
 	# Handle crouching
 	if Input.is_action_pressed("crouch"):
-		movement.crouch(delta, state, self, true)
+		movement.crouch(delta, state, self)
 	else:
-		movement.crouch(delta, state, self, false)
+		movement.stand(delta, state, self)
 
 	# Handle attacking
-	if Input.is_action_just_pressed("mb1"):
-		action_attack(delta, state, current_weapon)
+	# if Input.is_action_just_pressed("mb1"):
+	# 	action_attack(delta, state, current_weapon)
 
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		velocity.y -= GRAVITY * delta
 
-	camera.roll(input_dir, delta, self)
-	camera.bob(input_dir, delta, self)
+	# Camera effects
+	camera.roll_and_bob(input_dir, delta, self)
 	viewmodel_camera.bob(current_weapon, delta, self)
 
 	# Move player and calculate collision

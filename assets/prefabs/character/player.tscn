@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3dvmp5q8unxw"]
+[gd_scene load_steps=14 format=3 uid="uid://d3dvmp5q8unxw"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_x6duh"]
 [ext_resource type="ArrayMesh" uid="uid://c0efd0f7takl5" path="res://assets/models/Model_DBS.obj" id="2_1mxm2"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://scripts/weapons/Weapon_Shotgun.gd" id="4_ujgyv"]
 [ext_resource type="Script" path="res://scripts/player/viewmodel_camera.gd" id="6_4tiyp"]
 [ext_resource type="Script" path="res://scripts/player/movement.gd" id="7_ge7e6"]
+[ext_resource type="Script" path="res://scripts/player/input_queue.gd" id="8_5w0uy"]
+[ext_resource type="Script" path="res://scripts/player/player_values.gd" id="9_tel1q"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_exfln"]
 height = 0.667556
@@ -87,3 +89,9 @@ script = ExtResource("6_4tiyp")
 
 [node name="Movement" type="Node3D" parent="."]
 script = ExtResource("7_ge7e6")
+
+[node name="Input_Queue" type="Node3D" parent="."]
+script = ExtResource("8_5w0uy")
+
+[node name="Player_Values" type="Node3D" parent="."]
+script = ExtResource("9_tel1q")

@@ -16,6 +16,9 @@ func _ready():
 func _process(delta):
 	pass
 
+func roll_and_bob(dir, delta, parent):
+	bob(dir, delta, parent)
+	roll(dir, delta, parent)
 
 # REFACTOR:
 func bob(dir, delta, parent) -> void:
