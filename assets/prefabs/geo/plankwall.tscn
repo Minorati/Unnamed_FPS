@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://cghv7vg417ew4"]
 
-[ext_resource type="Texture2D" uid="uid://bjjc4qax2uvcl" path="res://assets/textures/planks.png" id="1_nxe7u"]
+[ext_resource type="Texture2D" uid="uid://bjjc4qax2uvcl" path="res://assets/textures/planks.png" id="1_k815d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwi8k"]
-albedo_texture = ExtResource("1_nxe7u")
+albedo_texture = ExtResource("1_k815d")
 uv1_triplanar = true
 
 [node name="plank_wall" type="CSGBox3D"]

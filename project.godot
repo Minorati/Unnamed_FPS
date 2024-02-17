@@ -24,6 +24,10 @@ window/size/viewport_height=720
 
 project/assembly_name="First Person Slasher"
 
+[filesystem]
+
+import/fbx/enabled=false
+
 [input]
 
 right={

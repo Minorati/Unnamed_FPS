@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cy3n27c1ssriv"]
 
 [ext_resource type="Texture2D" uid="uid://dj0m6wx7r68xl" path="res://assets/textures/crosshair.png" id="1_l7owt"]
-[ext_resource type="Script" path="res://scripts/HUD Scripts/PlayerHUD.gd" id="2_oq1cb"]
-[ext_resource type="PackedScene" uid="uid://bhiq4au5fr8vd" path="res://assets/scenes/HUD Scenes/HUDContainer.tscn" id="3_rh70b"]
-[ext_resource type="Script" path="res://scripts/HUD Scripts/HUD_values.gd" id="4_gv87h"]
+[ext_resource type="Script" path="res://scripts/ui/PlayerHUD.gd" id="2_oq1cb"]
+[ext_resource type="PackedScene" uid="uid://bhiq4au5fr8vd" path="res://assets/scenes/hud/HUDContainer.tscn" id="3_rh70b"]
+[ext_resource type="Script" path="res://scripts/ui/HUD_values.gd" id="4_gv87h"]
 
 [node name="PlayerUI" type="Control"]
 layout_mode = 3

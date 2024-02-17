@@ -1,73 +1,73 @@
 end-goals:
-    few levels
-    "solid"/"satisfying" gameplay
-    engaging in movement should be rewarding
+	few levels
+	"solid"/"satisfying" gameplay
+	engaging in movement should be rewarding
 
 general combat range:
-    primarily close-mid range
-        melee for good damage - maybe feeding a meter
-        mid-range guns for reliable damage - maybe with potential for close range application
+	primarily close-mid range
+		melee for good damage - maybe feeding a meter
+		mid-range guns for reliable damage - maybe with potential for close range application
 
 level design:
-    theming:
-        various - styling is a later feature
-    geometry/architecture:
-        somewhat tight levels
-        room-to-room for levels
-        reminiscent of OG quake
+	theming:
+		various - styling is a later feature
+	geometry/architecture:
+		somewhat tight levels
+		room-to-room for levels
+		reminiscent of OG quake
 
 weapon design:
-    core weapons:
-        TBD - future feature
-    melee weapon(s):
-        maintain high risk high reward
-        implement with stances
-        should have generous hitboxes
-            very close range can be claustrophic and take away the feeling of control
-        can add parrying as a stance move
-    guns:
-        maintain consistency in baseline strength
-        situationally powerful
-        mostly independent of stances
-    reloading:
-        universal cooldown?
-        infinite reserve?
+	core weapons:
+		TBD - future feature
+	melee weapon(s):
+		maintain high risk high reward
+		implement with stances
+		should have generous hitboxes
+			very close range can be claustrophic and take away the feeling of control
+		can add parrying as a stance move
+	guns:
+		maintain consistency in baseline strength
+		situationally powerful
+		mostly independent of stances
+	reloading:
+		universal cooldown?
+		infinite reserve?
 
 mechanics:
-    command inputs:
-        modifying melee attacks
-        not interfere with ranged attacks
-        not interfere with movement
-        incentivize deliberation in entering a stance
-            to prevent mis-movement
-            to prevent mis-input
-        should reward players with options instead of just damage
-        should reward knowledge and observation
-    stances:
-        can be accessed by command inputs
-        can be accessed conditionally - stances, certain attacks
-        give left and right strafe more functionality other than "just" movement
-            maybe as a cancel?
-            maybe as a reload?
+	command inputs:
+		modifying melee attacks
+		not interfere with ranged attacks
+		not interfere with movement
+		incentivize deliberation in entering a stance
+			to prevent mis-movement
+			to prevent mis-input
+		should reward players with options instead of just damage
+		should reward knowledge and observation
+	stances:
+		can be accessed by command inputs
+		can be accessed conditionally - stances, certain attacks
+		give left and right strafe more functionality other than "just" movement
+			maybe as a cancel?
+			maybe as a reload?
 
 air control
-    not too much air friction
-    give access to air movement potentially via stances
-    be able to access grounded state conveniently
+	not too much air friction
+	give access to air movement potentially via stances
+	be able to access grounded state conveniently
 
 enemies:
-    enemies should range from weak to overwhelming strength
-        strength through taking immense damage should be minimized
-        strength should be determined by applications and options:
-            projectile spam
-            evasiveness
-            melee threat
-            coerced movement
-            forcing stances (and having to understand your stance cancels)
-            some knowledge checks (be mindful to maintain simplicity)
-    a majority of enemies should be accessible to being "gunned down"
-    massively reducing damage vs enemies is not fun
-    should have special openings to encourage player to not just run and gun
-        through weapon interaction
-        through weakspots
-        through status effects
+	enemies should range from weak to overwhelming strength
+		strength through taking immense damage should be minimized
+		strength should be determined by applications and options:
+			projectile spam
+			evasiveness
+			melee threat
+			coerced movement
+			forcing stances (and having to understand your stance cancels)
+			some knowledge checks (be mindful to maintain simplicity)
+	a majority of enemies should be accessible to being "gunned down"
+	massively reducing damage vs enemies is not fun
+	should have special openings to encourage player to not just run and gun
+		through weapon interaction
+		through weakspots
+		through status effects
