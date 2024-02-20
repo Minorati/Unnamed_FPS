@@ -1,17 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://mjxdrh2buspe"]
+[gd_scene load_steps=6 format=3 uid="uid://mjxdrh2buspe"]
 
 [ext_resource type="PackedScene" uid="uid://ictwcds5jv36" path="res://assets/prefabs/geo/brickwall.tscn" id="1_d7uol"]
 [ext_resource type="PackedScene" uid="uid://d3dvmp5q8unxw" path="res://assets/prefabs/character/player.tscn" id="2_3l43o"]
 [ext_resource type="PackedScene" uid="uid://0sr52yetd3i6" path="res://assets/prefabs/geo/kill_floor.tscn" id="3_olv6f"]
+[ext_resource type="PackedScene" uid="uid://bdtjmruwkytye" path="res://assets/scenes/hud/pause_menu.tscn" id="4_s5656"]
+[ext_resource type="PackedScene" uid="uid://dahdbm6kbnafe" path="res://assets/prefabs/props/torch.tscn" id="5_wcae5"]
 
 [node name="ObstacleCourse" type="Node3D"]
 
-[node name="brick_wall" parent="." instance=ExtResource("1_d7uol")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05673, 0, -15.6446)
+[node name="Map" type="Node3D" parent="."]
+
+[node name="brick_wall" parent="Map" instance=ExtResource("1_d7uol")]
+transform = Transform3D(0.997457, 0, 0, 0, 0.997457, 0, 0, 0, 0.997457, -1.05673, 0, -15.6446)
 size = Vector3(14.123, 1, 44.5401)
+
+[node name="brick_wall2" parent="Map" instance=ExtResource("1_d7uol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2958, 2.30026, -4.79829)
+
+[node name="brick_wall3" parent="Map" instance=ExtResource("1_d7uol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11094, 2.6422, -4.79829)
+
+[node name="brick_wall4" parent="Map" instance=ExtResource("1_d7uol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.855442, 3.03132, -4.79829)
+
+[node name="brick_wall5" parent="Map" instance=ExtResource("1_d7uol")]
+transform = Transform3D(2.6674, 0, 0, 0, 2.6674, 0, 0, 0, 2.6674, 0.855442, 0.498003, -10.4224)
+
+[node name="brick_wall8" parent="Map" instance=ExtResource("1_d7uol")]
+transform = Transform3D(2.6674, 0, 0, 0, 2.6674, 0, 0, 0, 2.6674, 2.02855, 1.4637, -12.9921)
+
+[node name="brick_wall6" parent="Map" instance=ExtResource("1_d7uol")]
+transform = Transform3D(2.6674, 0, 0, 0, 2.6674, 0, 0, 0, 2.6674, -2.87483, -0.152672, -8.62008)
+
+[node name="brick_wall7" parent="Map" instance=ExtResource("1_d7uol")]
+transform = Transform3D(2.6674, 0, 0, 0, 2.6674, 0, 0, 0, 2.6674, 4.69011, 2.34171, -14.1611)
+
+[node name="Torch" parent="Map" instance=ExtResource("5_wcae5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88126, 2.9258, -12.4187)
+
+[node name="Torch2" parent="Map" instance=ExtResource("5_wcae5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88126, 2.9258, -4.63019)
 
 [node name="Player" parent="." instance=ExtResource("2_3l43o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.218228, 0.831793, 0.490549)
 
 [node name="KillFloor" parent="." instance=ExtResource("3_olv6f")]
-transform = Transform3D(34.1417, 0, 0, 0, 1, 0, 0, 0, 1, -3.0509, 1.77021, -8.88687)
+transform = Transform3D(56.7753, 0, 0, 0, 3.95551, 0, 0, 0, 101.586, -3.0509, -7.08257, -8.88687)
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_s5656")]
