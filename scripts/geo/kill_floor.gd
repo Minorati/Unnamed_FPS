@@ -5,13 +5,10 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	kill_floor_collider.monitoring = true
+	print("killfloor instantiated")
 	pass # Replace with function body.
 
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if kill_floor_collider.get_overlapping_bodies():
-		print("collided with:")
-		print(kill_floor_collider.get_overlapping_bodies())
+func _on_area_3d_body_entered(body):
+	print("Collided with kill floor")
+# TODO: add code to restart scene
 
