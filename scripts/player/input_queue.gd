@@ -66,6 +66,9 @@ func parse_command_sequence(queue):
 		["forward-crouch", "crouch", "neutral", "forward", _]:
 			print("crouch dash")
 			queue = ["crouch dash", "neutral", "neutral", "neutral", "neutral"]
+		["forward-crouch", "crouch", "neutral", "dash", _]:
+			print("deep crouch dash")
+			queue = ["crouch dash", "neutral", "neutral", "neutral", "neutral"]
 		["jump", "forward", "neutral", "forward", _]:
 			print("dash jump")
 		["jump", "dash", _, _, _]:
