@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://u77l8147t0f4"]
+
+[ext_resource type="ArrayMesh" uid="uid://l3b8in2wjcm" path="res://assets/models/Model_DT.obj" id="1_rgy87"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4dwo"]
+albedo_color = Color(0.705882, 0.498039, 0.988235, 1)
+
+[node name="DT_pickup" type="Node3D"]
+
+[node name="ModelDt" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_q4dwo")
+mesh = ExtResource("1_rgy87")
