@@ -86,7 +86,9 @@ func _physics_process(delta) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
+		input_queue.add_command("jump", state)
 		movement.jump(delta, state, self)
+
 
 	# Handle movement
 	if direction:
@@ -99,11 +101,22 @@ func _physics_process(delta) -> void:
 		movement.crouch(delta, state, self)
 	else:
 		movement.stand(delta, state, self)
-		if Input.is_action_just_released("crouch"):
-			print("just released crouch")
+		# if Input.is_action_just_released("crouch"):
+		# 	print("just released crouch")
 	
-	
-	input_queue.receive_state(state)
+	# Handle command inputs
+	# TODO: optimize + giga refactor this
+	if Input.is_action_just_pressed("forward"):
+		input_queue.add_command("forward", state)
+	if Input.is_action_just_pressed("backward"):
+		input_queue.add_command("backward", state)
+	if Input.is_action_just_pressed("crouch"):
+		input_queue.add_command("crouch", state)
+	if (Input.is_action_just_released("forward") && !input_dir) || (Input.is_action_just_released("backward") && !input_dir):
+		input_queue.add_command("neutral", state)
+
+
+	# input_queue.receive_state(state)
 
 	# Handle attacking
 	# if Input.is_action_just_pressed("mb1"):
