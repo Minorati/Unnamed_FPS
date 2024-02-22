@@ -10,5 +10,10 @@ func _ready():
 
 func _on_area_3d_body_entered(body):
 	print("Collided with kill floor")
+	print(body)
+	print(body.get_class())
+	if body.get_class() == "CharacterBody3D":
+		body.receive_damage(999, "true_dmg")
+
 # TODO: add code to restart scene
 
