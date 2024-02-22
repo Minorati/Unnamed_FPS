@@ -128,3 +128,10 @@ func _physics_process(delta) -> void:
 
 	# Move player and calculate collision
 	move_and_slide()
+
+
+func receive_damage(damage, damage_type):
+	health -= damage
+	
+func get_hp():
+	return health
