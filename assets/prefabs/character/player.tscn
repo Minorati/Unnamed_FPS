@@ -59,6 +59,9 @@ mesh = ExtResource("2_1mxm2")
 skeleton = NodePath("../../..")
 script = ExtResource("4_ujgyv")
 
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera/Model_DBS"]
+transform = Transform3D(1, 0, 0, 0, -6.96978e-07, -1, 0, 15.945, -4.37114e-08, -0.891965, 2.49487, 1.59875)
+
 [node name="PlayerHUD" parent="Head/Camera" instance=ExtResource("4_n3dri")]
 z_index = 1
 metadata/_edit_use_anchors_ = true

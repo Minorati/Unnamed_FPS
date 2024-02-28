@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://62ytsm5igbg8"]
+
+[ext_resource type="Texture2D" uid="uid://bjjc4qax2uvcl" path="res://assets/textures/planks.png" id="1_74daa"]
+[ext_resource type="Script" path="res://scripts/geo/level_select_panel.gd" id="2_23qko"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifcmb"]
+albedo_texture = ExtResource("1_74daa")
+uv1_triplanar = true
+
+[node name="level_select_panel" type="CSGBox3D"]
+transform = Transform3D(0.99939, 0.0349344, 0, 1.52703e-09, -4.36847e-08, 1, 0.0349344, -0.99939, -4.37114e-08, 0, 0, 0)
+use_collision = true
+size = Vector3(0.200012, 2.08859, 1.84605)
+material = SubResource("StandardMaterial3D_ifcmb")
+script = ExtResource("2_23qko")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(3.72529e-09, 4.37114e-08, 1, 0.999999, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0.104111, 0.00363926, 0.515835)

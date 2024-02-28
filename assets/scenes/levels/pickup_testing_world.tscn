@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://fj32x3hkkmhb"]
 
 [ext_resource type="PackedScene" uid="uid://d3dvmp5q8unxw" path="res://assets/prefabs/character/player.tscn" id="1_us2by"]
-[ext_resource type="PackedScene" uid="uid://bdwniqs6oqpoc" path="res://assets/prefabs/items/hp_vial.tscn" id="2_2bsg0"]
-[ext_resource type="PackedScene" uid="uid://dpx3qseoaxjhx" path="res://assets/prefabs/items/negative_hp_vial.tscn" id="3_bt4ao"]
+[ext_resource type="PackedScene" uid="uid://bdwniqs6oqpoc" path="res://assets/prefabs/pickups/hp_vial.tscn" id="2_2bsg0"]
+[ext_resource type="PackedScene" uid="uid://dpx3qseoaxjhx" path="res://assets/prefabs/pickups/negative_hp_vial.tscn" id="3_bt4ao"]
 [ext_resource type="PackedScene" uid="uid://bdtjmruwkytye" path="res://assets/scenes/hud/pause_menu.tscn" id="4_cb2w5"]
-[ext_resource type="PackedScene" uid="uid://ry3rw5u0wm2l" path="res://assets/prefabs/items/ap_pickup.tscn" id="5_apftu"]
-[ext_resource type="PackedScene" uid="uid://u77l8147t0f4" path="res://assets/prefabs/items/dt_pickup.tscn" id="6_mg38h"]
-[ext_resource type="PackedScene" uid="uid://y47r134hbayo" path="res://assets/prefabs/items/shells_pickup.tscn" id="7_voddx"]
+[ext_resource type="PackedScene" uid="uid://ry3rw5u0wm2l" path="res://assets/prefabs/pickups/ap_pickup.tscn" id="5_apftu"]
+[ext_resource type="PackedScene" uid="uid://u77l8147t0f4" path="res://assets/prefabs/pickups/dt_pickup.tscn" id="6_mg38h"]
+[ext_resource type="PackedScene" uid="uid://y47r134hbayo" path="res://assets/prefabs/pickups/shells_pickup.tscn" id="7_voddx"]
 
 [node name="pickupTestingWorld" type="Node3D"]
 

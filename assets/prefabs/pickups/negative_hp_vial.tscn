@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dpx3qseoaxjhx"]
 
-[ext_resource type="Script" path="res://scripts/items/hp_vial.gd" id="1_drkcl"]
+[ext_resource type="Script" path="res://scripts/pickups/hp_vial.gd" id="1_drkcl"]
 [ext_resource type="ArrayMesh" uid="uid://b6ltqvvkvfwu4" path="res://assets/models/Model_Vial.obj" id="1_fmclq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jj7hy"]

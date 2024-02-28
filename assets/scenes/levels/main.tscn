@@ -1,13 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0snsrew4h6p1"]
+[gd_scene load_steps=14 format=3 uid="uid://d0snsrew4h6p1"]
 
 [ext_resource type="Texture2D" uid="uid://cv8ijd336rmin" path="res://assets/textures/bricks.png" id="1_qdvui"]
 [ext_resource type="Texture2D" uid="uid://bjjc4qax2uvcl" path="res://assets/textures/planks.png" id="1_squm7"]
+[ext_resource type="PackedScene" uid="uid://62ytsm5igbg8" path="res://assets/prefabs/geo/level_select_panel.tscn" id="2_im3ty"]
 [ext_resource type="PackedScene" uid="uid://d3dvmp5q8unxw" path="res://assets/prefabs/character/player.tscn" id="3_qe8im"]
 [ext_resource type="PackedScene" uid="uid://bdtjmruwkytye" path="res://assets/scenes/hud/pause_menu.tscn" id="3_rd12v"]
 [ext_resource type="ArrayMesh" uid="uid://b3iq56s06j4gj" path="res://assets/models/Model_Saber.obj" id="4_5q4w8"]
-[ext_resource type="PackedScene" uid="uid://dpx3qseoaxjhx" path="res://assets/prefabs/items/negative_hp_vial.tscn" id="5_2pw1b"]
+[ext_resource type="PackedScene" uid="uid://dpx3qseoaxjhx" path="res://assets/prefabs/pickups/negative_hp_vial.tscn" id="5_2pw1b"]
 [ext_resource type="ArrayMesh" uid="uid://c62kfidui0hf5" path="res://assets/models/Model_Sword.obj" id="5_f5q2f"]
-[ext_resource type="PackedScene" uid="uid://bdwniqs6oqpoc" path="res://assets/prefabs/items/hp_vial.tscn" id="7_6jjqu"]
+[ext_resource type="PackedScene" uid="uid://bdwniqs6oqpoc" path="res://assets/prefabs/pickups/hp_vial.tscn" id="7_6jjqu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifcmb"]
 albedo_texture = ExtResource("1_squm7")
@@ -27,7 +28,7 @@ flip_faces = true
 radius = 0.25
 height = 0.5
 
-[node name="Node3D" type="Node3D"]
+[node name="main" type="Node3D"]
 
 [node name="Map" type="Node" parent="."]
 
@@ -35,30 +36,6 @@ height = 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.82453, 2.66442, 0.267431)
 use_collision = true
 size = Vector3(2.25647, 0.195313, 14.4193)
-material = SubResource("StandardMaterial3D_ifcmb")
-
-[node name="Panel_0" type="CSGBox3D" parent="Map"]
-transform = Transform3D(0.99939, 0.0349344, 0, 1.52703e-09, -4.36847e-08, 1, 0.0349344, -0.99939, -4.37114e-08, -13.0856, 3.98712, 6.55406)
-use_collision = true
-size = Vector3(0.200012, 2.08859, 1.84605)
-material = SubResource("StandardMaterial3D_ifcmb")
-
-[node name="Panel_1" type="CSGBox3D" parent="Map"]
-transform = Transform3D(0.99939, 0.0349344, 0, 1.52703e-09, -4.36847e-08, 1, 0.0349344, -0.99939, -4.37114e-08, -13.0856, 3.98712, 1.39206)
-use_collision = true
-size = Vector3(0.200012, 2.08859, 1.84605)
-material = SubResource("StandardMaterial3D_ifcmb")
-
-[node name="Panel_2" type="CSGBox3D" parent="Map"]
-transform = Transform3D(0.99939, 0.0349344, 0, 1.52703e-09, -4.36847e-08, 1, 0.0349344, -0.99939, -4.37114e-08, -13.0856, 3.98712, -3.33099)
-use_collision = true
-size = Vector3(0.200012, 2.08859, 1.84605)
-material = SubResource("StandardMaterial3D_ifcmb")
-
-[node name="Panel_3" type="CSGBox3D" parent="Map"]
-transform = Transform3D(0.99939, 0.0349344, 0, 1.52703e-09, -4.36847e-08, 1, 0.0349344, -0.99939, -4.37114e-08, -13.0856, 3.98712, -7.01939)
-use_collision = true
-size = Vector3(0.200012, 2.08859, 1.84605)
 material = SubResource("StandardMaterial3D_ifcmb")
 
 [node name="Floor" type="CSGBox3D" parent="Map"]
@@ -174,13 +151,26 @@ skeleton = NodePath("../../..")
 [node name="HP_Vial" parent="Map" instance=ExtResource("5_2pw1b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95907, 2.45547, -4.15294)
 
-[node name="PauseMenu" type="CanvasLayer" parent="."]
-visible = false
-
 [node name="HP_Vial" parent="." instance=ExtResource("7_6jjqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20664, 2.42729, -4.55747)
 
-[node name="Player" parent="." instance=ExtResource("3_qe8im")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.873051, 2.76221, 2.79121)
+[node name="level_select_panel" parent="." instance=ExtResource("2_im3ty")]
+transform = Transform3D(0.99939, 0.0349344, 0, 1.52703e-09, -4.36847e-08, 1, 0.0349344, -0.99939, -4.37114e-08, -13.5069, 3.72263, 7.09253)
+level_name = "main"
 
-[node name="PauseMenu2" parent="." instance=ExtResource("3_rd12v")]
+[node name="level_select_panel2" parent="." instance=ExtResource("2_im3ty")]
+transform = Transform3D(0.99939, 0.0349344, 0, 1.52703e-09, -4.36847e-08, 1, 0.0349344, -0.99939, -4.37114e-08, -13.5069, 3.72263, 4.64384)
+level_name = "obstacle_course"
+
+[node name="level_select_panel3" parent="." instance=ExtResource("2_im3ty")]
+transform = Transform3D(0.99939, 0.0349344, 0, 1.52703e-09, -4.36847e-08, 1, 0.0349344, -0.99939, -4.37114e-08, -13.5069, 3.72263, 2.11424)
+level_name = "pickup_testing_world"
+
+[node name="level_select_panel4" parent="." instance=ExtResource("2_im3ty")]
+transform = Transform3D(0.99939, 0.0349344, 0, 1.52703e-09, -4.36847e-08, 1, 0.0349344, -0.99939, -4.37114e-08, -13.5069, 3.72263, -0.399962)
+level_name = "utm"
+
+[node name="Player" parent="." instance=ExtResource("3_qe8im")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00755, 2.76221, 2.79121)
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_rd12v")]
