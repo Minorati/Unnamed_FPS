@@ -22,5 +22,9 @@ func attack():
 		if "level_select_panel" in ray.name:
 			print("lsp")
 			ray.change_level()
-		else:
-			print(ray.name)
+		if ray is enemy:
+			print("is enemy")
+			ray.receive_damage(20)
+		
+		print(ray.name)
+		print(ray.get_class())

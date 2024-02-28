@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://vwyeqqib7u0"]
+
+[ext_resource type="Script" path="res://assets/prefabs/character/sample_enemy.gd" id="1_dkx7c"]
+[ext_resource type="ArrayMesh" uid="uid://c62kfidui0hf5" path="res://assets/models/Model_Sword.obj" id="1_vxet3"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ahc5r"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_if571"]
+
+[node name="SampleEnemy" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("1_dkx7c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_ahc5r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_if571")
+
+[node name="ModelSword" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.675308, 0, 0, 0, 0, -0.675308, 0, 0.675308, 0, 0.00750017, 0.054107, -0.559813)
+mesh = ExtResource("1_vxet3")
