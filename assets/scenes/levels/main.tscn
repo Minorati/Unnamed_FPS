@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0snsrew4h6p1"]
+[gd_scene load_steps=15 format=3 uid="uid://d0snsrew4h6p1"]
 
 [ext_resource type="Texture2D" uid="uid://cv8ijd336rmin" path="res://assets/textures/bricks.png" id="1_qdvui"]
 [ext_resource type="Texture2D" uid="uid://bjjc4qax2uvcl" path="res://assets/textures/planks.png" id="1_squm7"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dpx3qseoaxjhx" path="res://assets/prefabs/pickups/negative_hp_vial.tscn" id="5_2pw1b"]
 [ext_resource type="ArrayMesh" uid="uid://c62kfidui0hf5" path="res://assets/models/Model_Sword.obj" id="5_f5q2f"]
 [ext_resource type="PackedScene" uid="uid://bdwniqs6oqpoc" path="res://assets/prefabs/pickups/hp_vial.tscn" id="7_6jjqu"]
+[ext_resource type="PackedScene" uid="uid://vwyeqqib7u0" path="res://assets/prefabs/character/sample_enemy.tscn" id="10_0bcta"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifcmb"]
 albedo_texture = ExtResource("1_squm7")
@@ -174,3 +175,6 @@ level_name = "utm"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00755, 2.76221, 2.79121)
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_rd12v")]
+
+[node name="SampleEnemy" parent="." instance=ExtResource("10_0bcta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.87717, 8.92682, 6.91659)

@@ -132,6 +132,8 @@ func _physics_process(delta) -> void:
 
 func receive_damage(damage, damage_type):
 	health -= damage
+	if health < 0:
+		get_tree().reload_current_scene()
 	
 func get_hp():
 	return health
