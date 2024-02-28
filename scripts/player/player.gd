@@ -119,8 +119,8 @@ func _physics_process(delta) -> void:
 	# input_queue.receive_state(state)
 
 	# Handle attacking
-	# if Input.is_action_just_pressed("mb1"):
-	# 	action_attack(delta, state, current_weapon)
+	if Input.is_action_just_pressed("mb1"):
+		action_attack(delta, state, current_weapon)
 
 	# Camera effects
 	camera.roll_and_bob(input_dir, delta, self)
