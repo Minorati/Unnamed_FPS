@@ -29,10 +29,13 @@ const GRAVITY: float = 9.8
 @onready var camera = $Head/Camera
 @onready var playerHUDValues = $Head/Camera/PlayerHUD/HUD_Values
 @onready var viewmodel_camera = $Head/Camera/ViewmodelCamera/ViewmodelCamera/ViewmodelCamera
-@onready var wep_dbs = $Head/Camera/Model_DBS
+@onready var wep_dbs = $Head/Camera/Weapons/DBS
+@onready var wep_sg = $Head/Camera/Weapons/SemiSG
+@onready var wep_revolver = $Head/Camera/Weapons/Revolver
 
-@onready var weapons_belt = [wep_dbs, wep_dbs]
-@onready var current_weapon = weapons_belt[0]
+@onready var weapons_belt = [wep_dbs, wep_sg, wep_revolver]
+@onready var wpn_idx = 0
+@onready var current_weapon = weapons_belt[wpn_idx]
 
 @onready var movement = $Movement
 @onready var stand_collider = $Stand_Collider
@@ -47,6 +50,7 @@ const GRAVITY: float = 9.8
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	can_stand_collider.monitoring = true
+	select_weapon(0)
 
 # Camera movement
 func _unhandled_input(event) -> void:
@@ -56,7 +60,7 @@ func _unhandled_input(event) -> void:
 
 		head.rotate_y(y_rotation)
 		camera.rotate_x(x_rotation)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(89))
 
 
 func _process(delta) -> void:
@@ -122,6 +126,17 @@ func _physics_process(delta) -> void:
 	if Input.is_action_just_pressed("mb1"):
 		action_attack(delta, state, current_weapon)
 
+	if Input.is_action_just_pressed("next_weapon"):
+		wpn_idx+= 1
+		if wpn_idx > weapons_belt.size()-1:
+			wpn_idx = 0
+		select_weapon(wpn_idx)
+	if Input.is_action_just_pressed("prev_weapon"):
+		wpn_idx-= 1
+		if wpn_idx < 0:
+			wpn_idx = weapons_belt.size()-1
+		select_weapon(wpn_idx)
+
 	# Camera effects
 	camera.roll_and_bob(input_dir, delta, self)
 	viewmodel_camera.bob(current_weapon, delta, self)
@@ -129,6 +144,11 @@ func _physics_process(delta) -> void:
 	# Move player and calculate collision
 	move_and_slide()
 
+func select_weapon(idx):
+	for wep in weapons_belt:
+		wep.visible = false
+	weapons_belt[idx].visible = true
+	current_weapon = weapons_belt[idx]
 
 func receive_damage(damage, damage_type):
 	health -= damage
