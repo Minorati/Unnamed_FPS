@@ -1,6 +1,8 @@
-extends MeshInstance3D
+extends Node3D
 
 
+
+@onready var model = $Model
 @onready var raycast = $RayCast3D
 
 # Called when the node enters the scene tree for the first time.

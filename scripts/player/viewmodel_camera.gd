@@ -17,4 +17,4 @@ func bob(weapon, delta, parent):
 	var freq = 0.6
 	t_bob += delta * parent.velocity.length()
 	var new_pos = amp * sin(t_bob  * freq) + original_pos
-	weapon.transform.origin.x = new_pos
+	weapon.model.transform.origin.x = new_pos
