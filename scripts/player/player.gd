@@ -42,6 +42,9 @@ const GRAVITY: float = 9.8
 @onready var crouch_collider = $Crouch_Collider
 @onready var can_stand_collider = $Can_Stand
 
+@onready var standing_head_pos = $Standing_Head_Position
+@onready var crouching_head_pos = $Crouching_Head_Position
+
 @onready var input_queue = $Input_Queue
 @onready var state = $State
 
@@ -50,6 +53,7 @@ const GRAVITY: float = 9.8
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	can_stand_collider.monitoring = true
+	head.position.y = standing_head_pos.position.y
 	select_weapon(0)
 
 # Camera movement
@@ -103,8 +107,14 @@ func _physics_process(delta) -> void:
 	# Handle crouching
 	if Input.is_action_pressed("crouch"):
 		movement.crouch(delta, state, self)
+		head.position.y = crouching_head_pos.position.y
 	else:
-		movement.stand(delta, state, self)
+		# if this set of functions gets out of hand, remove nested if
+		if can_stand_collider.can_stand():
+			movement.stand(delta, state, self)
+			head.position.y = standing_head_pos.position.y
+		else:
+			print("cannot stand")
 		# if Input.is_action_just_released("crouch"):
 		# 	print("just released crouch")
 	

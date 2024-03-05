@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://d3dvmp5q8unxw"]
+[gd_scene load_steps=17 format=3 uid="uid://d3dvmp5q8unxw"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_x6duh"]
+[ext_resource type="Script" path="res://assets/prefabs/character/Can_Stand.gd" id="2_0kect"]
 [ext_resource type="ArrayMesh" uid="uid://c0efd0f7takl5" path="res://assets/models/Model_DBS.obj" id="2_1mxm2"]
 [ext_resource type="Script" path="res://scripts/player/camera.gd" id="2_5masf"]
 [ext_resource type="PackedScene" uid="uid://cy3n27c1ssriv" path="res://assets/scenes/hud/playerHUD.tscn" id="4_n3dri"]
@@ -13,7 +14,7 @@
 [ext_resource type="Script" path="res://scripts/player/state.gd" id="9_6l2x0"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_exfln"]
-height = 0.667556
+height = 1.34042
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_q10wh"]
 
@@ -26,22 +27,23 @@ collision_layer = 2
 script = ExtResource("1_x6duh")
 
 [node name="Can_Stand" type="Area3D" parent="."]
-transform = Transform3D(1.494, 0, 0, 0, 1.494, 0, 0, 0, 1.494, 0, 1.70462, 0)
+transform = Transform3D(0.984, 0, 0, 0, 0.984, 0, 0, 0, 0.984, 0, 1.30461, 0)
+script = ExtResource("2_0kect")
 
 [node name="Can_Stand_Collider" type="CollisionShape3D" parent="Can_Stand"]
-transform = Transform3D(0.654494, 0, 0, 0, 0.654494, 0, 0, 0, 0.654494, 0, 0, 0)
 shape = SubResource("CylinderShape3D_exfln")
 
 [node name="Crouch_Collider" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21823, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514738, 0)
 shape = SubResource("SphereShape3D_q10wh")
 
 [node name="Stand_Collider" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06368, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01273, 0)
 shape = SubResource("CapsuleShape3D_kr2pn")
 
 [node name="Model_Player" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 1.11071, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 0.9154, 0)
+visible = false
 mesh = SubResource("CylinderMesh_berde")
 skeleton = NodePath("")
 
@@ -131,3 +133,9 @@ script = ExtResource("8_5w0uy")
 
 [node name="State" type="Node3D" parent="."]
 script = ExtResource("9_6l2x0")
+
+[node name="Crouching_Head_Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.892473, 0)
+
+[node name="Standing_Head_Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65755, 0)

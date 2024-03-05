@@ -64,11 +64,29 @@ func crouch(delta, state, parent) -> void:
 	crouch_collider.disabled = false
 
 
+
+	# if can_stand_collider.get_overlapping_bodies():
+	# 	print(can_stand_collider)
+	# else:
+	# 	stand_collider.disabled = false
+	# 	crouch_collider.disabled = true
+		
+	# 	# only stand whenever it is valid to stand
+	# 	if state.is_crouching == true:
+	# 		# print("standing")
+	# 		pass
+	# 		state.is_crouching = false
+
+
 func stand(delta, state, parent) -> void:
 	var stand_collider = parent.stand_collider
 	var crouch_collider = parent.crouch_collider
 	var can_stand_collider = parent.can_stand_collider
 
+	# if can_stand_collider.can_stand():
+	# 	# allow standing
+	# 	pass
+		# only stand whenever it is valid to stand
 	if state.is_crouching == true:
 		# print("standing")
 		pass
@@ -79,3 +97,4 @@ func stand(delta, state, parent) -> void:
 	else:
 		stand_collider.disabled = false
 		crouch_collider.disabled = true
+		
