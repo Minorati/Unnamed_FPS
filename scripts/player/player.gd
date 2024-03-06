@@ -4,6 +4,7 @@ extends CharacterBody3D
 const JUMP_VELOCITY: float = 4.5
 const SENSITIVITY: float = 0.001
 const GRAVITY: float = 9.8
+const SPEED: float = 7.0
 
 #Player stats
 @export var health = 100
@@ -46,14 +47,18 @@ const GRAVITY: float = 9.8
 @onready var crouching_head_pos = $Crouching_Head_Position
 
 @onready var input_queue = $Input_Queue
-@onready var state = $State
+@onready var status_manager = $Status_Manager
 
+@onready var state = status_manager.state
 
 # On init
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	can_stand_collider.monitoring = true
 	head.position.y = standing_head_pos.position.y
+	input_queue.attach_status_manager(status_manager)
+	status_manager.attach_player(self)
+
 	select_weapon(0)
 
 # Camera movement

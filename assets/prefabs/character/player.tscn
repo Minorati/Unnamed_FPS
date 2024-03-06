@@ -11,7 +11,7 @@
 [ext_resource type="ArrayMesh" uid="uid://mvusm6ro3q1h" path="res://assets/models/Model_SemiSG.obj" id="7_tfxty"]
 [ext_resource type="Script" path="res://scripts/player/input_queue.gd" id="8_5w0uy"]
 [ext_resource type="ArrayMesh" uid="uid://nis37y8k1n7b" path="res://assets/models/Model_Revolver.obj" id="8_fa8qg"]
-[ext_resource type="Script" path="res://scripts/player/state.gd" id="9_6l2x0"]
+[ext_resource type="Script" path="res://scripts/player/status_manager.gd" id="12_wb17w"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_exfln"]
 height = 1.34042
@@ -131,8 +131,8 @@ script = ExtResource("7_ge7e6")
 [node name="Input_Queue" type="Node3D" parent="."]
 script = ExtResource("8_5w0uy")
 
-[node name="State" type="Node3D" parent="."]
-script = ExtResource("9_6l2x0")
+[node name="Status_Manager" type="Node3D" parent="."]
+script = ExtResource("12_wb17w")
 
 [node name="Crouching_Head_Position" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.892473, 0)
