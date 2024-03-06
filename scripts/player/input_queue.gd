@@ -13,6 +13,12 @@ var command_queue = ["neutral","neutral","neutral","neutral","neutral"]
 func _ready():
 	print("instantiating input queue")
 
+var status_manager = null;
+
+func attach_status_manager(_manager):
+	print("I am given a manager")
+	print(_manager)
+	status_manager = _manager
 # # p_state "player state"
 # # t_state "technical state"
 # # 	is the "named state" parsed from player's input
@@ -28,6 +34,8 @@ func _ready():
 # 				#print("doesn't match at: " + key)
 # 				return false
 # 	return true
+
+# TODO: change all these strings to ENUM
 
 func dash(event):
 	if event.type == Input.is_anything_pressed():
@@ -62,12 +70,13 @@ func parse_command_sequence(queue):
 	match queue:
 		["forward", "neutral", "forward", _, _]:
 			print("dash")
+			status_manager.give_stance("dash")
 			queue = ["dash", "neutral", "neutral", "neutral", "neutral"]
 		["forward-crouch", "crouch", "neutral", "forward", _]:
 			print("crouch dash")
 			queue = ["crouch dash", "neutral", "neutral", "neutral", "neutral"]
 		["forward-crouch", "crouch", "neutral", "dash", _]:
-			print("deep crouch dash")
+			print("far crouch dash")
 			queue = ["crouch dash", "neutral", "neutral", "neutral", "neutral"]
 		["jump", "forward", "neutral", "forward", _]:
 			print("dash jump")
