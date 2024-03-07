@@ -1,10 +1,12 @@
 extends CharacterBody3D
 
-# const SPEED: float = 7.0
+
 const JUMP_VELOCITY: float = 4.5
 const SENSITIVITY: float = 0.001
 const GRAVITY: float = 9.8
-const SPEED: float = 7.0
+
+const BASE_SPEED: float = 7.0
+var SPEED: float = 7.0
 
 #Player stats
 @export var health = 100

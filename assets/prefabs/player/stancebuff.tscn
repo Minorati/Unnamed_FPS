@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgyt6vynm1fkv"]
+
+[ext_resource type="Script" path="res://assets/prefabs/player/stancebuff.gd" id="1_lrofc"]
+
+[node name="Stancebuff" type="Node3D"]
+script = ExtResource("1_lrofc")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_buff_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
