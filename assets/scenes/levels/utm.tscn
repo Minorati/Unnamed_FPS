@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvpuwyo7qihbv"]
 
 [ext_resource type="PackedScene" uid="uid://ictwcds5jv36" path="res://assets/prefabs/geo/brickwall.tscn" id="1_ec8hh"]
-[ext_resource type="PackedScene" uid="uid://d3dvmp5q8unxw" path="res://assets/prefabs/character/player.tscn" id="2_vtnya"]
+[ext_resource type="PackedScene" uid="uid://d3dvmp5q8unxw" path="res://assets/prefabs/player/player.tscn" id="2_vtnya"]
 [ext_resource type="PackedScene" uid="uid://bdwniqs6oqpoc" path="res://assets/prefabs/pickups/hp_vial.tscn" id="3_6obr7"]
 [ext_resource type="PackedScene" uid="uid://dpx3qseoaxjhx" path="res://assets/prefabs/pickups/negative_hp_vial.tscn" id="4_8oyaq"]
 [ext_resource type="PackedScene" uid="uid://bdtjmruwkytye" path="res://assets/scenes/hud/pause_menu.tscn" id="5_3k1ve"]
