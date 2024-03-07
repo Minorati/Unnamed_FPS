@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://d3dvmp5q8unxw"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_x6duh"]
-[ext_resource type="Script" path="res://assets/prefabs/character/Can_Stand.gd" id="2_0kect"]
+[ext_resource type="Script" path="res://assets/prefabs/player/Can_Stand.gd" id="2_0kect"]
 [ext_resource type="ArrayMesh" uid="uid://c0efd0f7takl5" path="res://assets/models/Model_DBS.obj" id="2_1mxm2"]
 [ext_resource type="Script" path="res://scripts/player/camera.gd" id="2_5masf"]
 [ext_resource type="PackedScene" uid="uid://cy3n27c1ssriv" path="res://assets/scenes/hud/playerHUD.tscn" id="4_n3dri"]
