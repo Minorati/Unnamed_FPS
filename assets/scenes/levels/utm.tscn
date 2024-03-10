@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvpuwyo7qihbv"]
+
+[ext_resource type="PackedScene" uid="uid://ictwcds5jv36" path="res://assets/prefabs/geo/brickwall.tscn" id="1_ec8hh"]
+[ext_resource type="PackedScene" uid="uid://d3dvmp5q8unxw" path="res://assets/prefabs/player/player.tscn" id="2_vtnya"]
+[ext_resource type="PackedScene" uid="uid://bdwniqs6oqpoc" path="res://assets/prefabs/pickups/hp_vial.tscn" id="3_6obr7"]
+[ext_resource type="PackedScene" uid="uid://dpx3qseoaxjhx" path="res://assets/prefabs/pickups/negative_hp_vial.tscn" id="4_8oyaq"]
+[ext_resource type="PackedScene" uid="uid://bdtjmruwkytye" path="res://assets/scenes/hud/pause_menu.tscn" id="5_3k1ve"]
+[ext_resource type="PackedScene" uid="uid://0sr52yetd3i6" path="res://assets/prefabs/geo/kill_floor.tscn" id="6_rmbgy"]
+
+[node name="Utm" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("2_vtnya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.160591, 1.29589, -1.74598)
+
+[node name="south_wall" parent="." instance=ExtResource("1_ec8hh")]
+transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 40, -10.5, 5, 0)
+snap = 0.5
+
+[node name="north_wall" parent="." instance=ExtResource("1_ec8hh")]
+transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 40, 10.5, 5, 0)
+snap = 0.5
+
+[node name="floor" parent="." instance=ExtResource("1_ec8hh")]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 40, 0, 0, 0)
+snap = 1.0
+
+[node name="HP_Vial" parent="." instance=ExtResource("3_6obr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.86894, 0.5, -17.9688)
+
+[node name="HP_Vial2" parent="." instance=ExtResource("3_6obr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.9626, 0.5, -15.9542)
+
+[node name="HP_Vial3" parent="." instance=ExtResource("3_6obr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.02619, 0.5, -13.9707)
+
+[node name="Negative_HP_Vial" parent="." instance=ExtResource("4_8oyaq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.09214, 0.5, -11.8017)
+
+[node name="Negative_HP_Vial2" parent="." instance=ExtResource("4_8oyaq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.13184, 0.500001, -9.36791)
+
+[node name="Negative_HP_Vial3" parent="." instance=ExtResource("4_8oyaq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.18821, 0.5, -6.63038)
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_3k1ve")]
+
+[node name="KillFloor" parent="." instance=ExtResource("6_rmbgy")]
+transform = Transform3D(51.15, 0, 0, 0, 2, 0, 0, 0, 51.15, 0, -10, 0)

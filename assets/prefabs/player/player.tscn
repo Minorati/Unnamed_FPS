@@ -1,0 +1,141 @@
+[gd_scene load_steps=17 format=3 uid="uid://d3dvmp5q8unxw"]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_x6duh"]
+[ext_resource type="Script" path="res://assets/prefabs/player/Can_Stand.gd" id="2_0kect"]
+[ext_resource type="ArrayMesh" uid="uid://c0efd0f7takl5" path="res://assets/models/Model_DBS.obj" id="2_1mxm2"]
+[ext_resource type="Script" path="res://scripts/player/camera.gd" id="2_5masf"]
+[ext_resource type="PackedScene" uid="uid://cy3n27c1ssriv" path="res://assets/scenes/hud/playerHUD.tscn" id="4_n3dri"]
+[ext_resource type="Script" path="res://scripts/weapons/Weapon_Shotgun.gd" id="4_ujgyv"]
+[ext_resource type="Script" path="res://scripts/player/viewmodel_camera.gd" id="6_4tiyp"]
+[ext_resource type="Script" path="res://scripts/player/movement.gd" id="7_ge7e6"]
+[ext_resource type="ArrayMesh" uid="uid://mvusm6ro3q1h" path="res://assets/models/Model_SemiSG.obj" id="7_tfxty"]
+[ext_resource type="Script" path="res://scripts/player/input_queue.gd" id="8_5w0uy"]
+[ext_resource type="ArrayMesh" uid="uid://nis37y8k1n7b" path="res://assets/models/Model_Revolver.obj" id="8_fa8qg"]
+[ext_resource type="Script" path="res://scripts/player/status_manager.gd" id="12_wb17w"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_exfln"]
+height = 1.34042
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_q10wh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kr2pn"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_berde"]
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_x6duh")
+
+[node name="Can_Stand" type="Area3D" parent="."]
+transform = Transform3D(0.984, 0, 0, 0, 0.984, 0, 0, 0, 0.984, 0, 1.30461, 0)
+script = ExtResource("2_0kect")
+
+[node name="Can_Stand_Collider" type="CollisionShape3D" parent="Can_Stand"]
+shape = SubResource("CylinderShape3D_exfln")
+
+[node name="Crouch_Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514738, 0)
+shape = SubResource("SphereShape3D_q10wh")
+
+[node name="Stand_Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01273, 0)
+shape = SubResource("CapsuleShape3D_kr2pn")
+
+[node name="Model_Player" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 0.9154, 0)
+visible = false
+mesh = SubResource("CylinderMesh_berde")
+skeleton = NodePath("")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="Camera" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0623915, 0)
+cull_mask = 1048573
+fov = 78.0
+script = ExtResource("2_5masf")
+
+[node name="PlayerHUD" parent="Head/Camera" instance=ExtResource("4_n3dri")]
+z_index = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ViewmodelCamera" type="SubViewportContainer" parent="Head/Camera"]
+light_mask = 3
+visibility_layer = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ViewmodelCamera" type="SubViewport" parent="Head/Camera/ViewmodelCamera"]
+transparent_bg = true
+handle_input_locally = false
+canvas_cull_mask = 4293918722
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="ViewmodelCamera" type="Camera3D" parent="Head/Camera/ViewmodelCamera/ViewmodelCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7391, 0)
+cull_mask = 2
+fov = 78.0
+script = ExtResource("6_4tiyp")
+
+[node name="Weapons" type="Node3D" parent="Head/Camera"]
+
+[node name="DBS" type="Node3D" parent="Head/Camera/Weapons"]
+script = ExtResource("4_ujgyv")
+
+[node name="Model" type="MeshInstance3D" parent="Head/Camera/Weapons/DBS"]
+transform = Transform3D(0.205, 0, 0, 0, 0.205, 0, 0, 0, 0.205, 0.17195, -0.593762, -0.766364)
+layers = 2
+mesh = ExtResource("2_1mxm2")
+skeleton = NodePath("../../../../..")
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera/Weapons/DBS"]
+transform = Transform3D(1, 0, 0, 0, -8.74228e-07, -1, 0, 20, -4.37114e-08, 0, -0.0476588, -0.567008)
+
+[node name="SemiSG" type="Node3D" parent="Head/Camera/Weapons"]
+transform = Transform3D(1.09039, 0, 0, 0, 1.09039, 0, 0, 0, 1.09039, 0, 0.0158834, 0.0968417)
+visible = false
+script = ExtResource("4_ujgyv")
+
+[node name="Model" type="MeshInstance3D" parent="Head/Camera/Weapons/SemiSG"]
+transform = Transform3D(0.00444303, 0.0417538, 0, -0.0417538, 0.00444303, 0, 0, 0, 0.0419896, 0.199642, -0.225419, -0.539399)
+layers = 2
+mesh = ExtResource("7_tfxty")
+skeleton = NodePath("../../../../..")
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera/Weapons/SemiSG"]
+transform = Transform3D(1, 0, 0, 0, -8.74228e-07, -1, 0, 20, -4.37114e-08, 0, -0.0476588, -0.567008)
+
+[node name="Revolver" type="Node3D" parent="Head/Camera/Weapons"]
+visible = false
+script = ExtResource("4_ujgyv")
+
+[node name="Model" type="MeshInstance3D" parent="Head/Camera/Weapons/Revolver"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.195196, -0.387117, -0.709187)
+layers = 2
+mesh = ExtResource("8_fa8qg")
+skeleton = NodePath("../../../../..")
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera/Weapons/Revolver"]
+transform = Transform3D(1, 0, 0, 0, -8.74228e-07, -1, 0, 20, -4.37114e-08, 0, -0.0476588, -0.567008)
+
+[node name="Movement" type="Node3D" parent="."]
+script = ExtResource("7_ge7e6")
+
+[node name="Input_Queue" type="Node3D" parent="."]
+script = ExtResource("8_5w0uy")
+
+[node name="Status_Manager" type="Node3D" parent="."]
+script = ExtResource("12_wb17w")
+
+[node name="Crouching_Head_Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.892473, 0)
+
+[node name="Standing_Head_Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65755, 0)

@@ -1,0 +1,185 @@
+[gd_scene load_steps=16 format=3 uid="uid://d0snsrew4h6p1"]
+
+[ext_resource type="Texture2D" uid="uid://cv8ijd336rmin" path="res://assets/textures/bricks.png" id="1_qdvui"]
+[ext_resource type="Texture2D" uid="uid://bjjc4qax2uvcl" path="res://assets/textures/planks.png" id="1_squm7"]
+[ext_resource type="PackedScene" uid="uid://62ytsm5igbg8" path="res://assets/prefabs/geo/level_select_panel.tscn" id="2_im3ty"]
+[ext_resource type="PackedScene" uid="uid://d3dvmp5q8unxw" path="res://assets/prefabs/player/player.tscn" id="3_qe8im"]
+[ext_resource type="PackedScene" uid="uid://bdtjmruwkytye" path="res://assets/scenes/hud/pause_menu.tscn" id="3_rd12v"]
+[ext_resource type="ArrayMesh" uid="uid://b3iq56s06j4gj" path="res://assets/models/Model_Saber.obj" id="4_5q4w8"]
+[ext_resource type="PackedScene" uid="uid://dpx3qseoaxjhx" path="res://assets/prefabs/pickups/negative_hp_vial.tscn" id="5_2pw1b"]
+[ext_resource type="ArrayMesh" uid="uid://c62kfidui0hf5" path="res://assets/models/Model_Sword.obj" id="5_f5q2f"]
+[ext_resource type="PackedScene" uid="uid://bdwniqs6oqpoc" path="res://assets/prefabs/pickups/hp_vial.tscn" id="7_6jjqu"]
+[ext_resource type="PackedScene" uid="uid://vwyeqqib7u0" path="res://assets/prefabs/enemy/sample_enemy.tscn" id="10_0bcta"]
+[ext_resource type="ArrayMesh" uid="uid://h0rnnkg8wajw" path="res://assets/models/Model_Machete.obj" id="11_tw615"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifcmb"]
+albedo_texture = ExtResource("1_squm7")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qrcx8"]
+albedo_texture = ExtResource("1_qdvui")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xoxcn"]
+albedo_color = Color(0.788235, 0.776471, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qpcap"]
+material = SubResource("StandardMaterial3D_xoxcn")
+flip_faces = true
+radius = 0.25
+height = 0.5
+
+[node name="main" type="Node3D"]
+
+[node name="Map" type="Node" parent="."]
+
+[node name="Bench" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.82453, 2.66442, 0.267431)
+use_collision = true
+size = Vector3(2.25647, 0.195313, 14.4193)
+material = SubResource("StandardMaterial3D_ifcmb")
+
+[node name="Floor" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25008, 1.39212, 0.371954)
+use_collision = true
+size = Vector3(21.6028, 1, 22.9673)
+material = SubResource("StandardMaterial3D_qrcx8")
+
+[node name="Wall_West" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.54056, 4.16187, -9.34576)
+use_collision = true
+size = Vector3(22.8508, 5.12842, 0.833861)
+material = SubResource("StandardMaterial3D_qrcx8")
+
+[node name="Wall_East" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24837, 4.16187, 10.3586)
+use_collision = true
+size = Vector3(22.5937, 5.12842, 0.833861)
+material = SubResource("StandardMaterial3D_qrcx8")
+
+[node name="Wall_South" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.1433, 4.16187, 0.610978)
+use_collision = true
+size = Vector3(22.1022, 5.12842, 0.833861)
+material = SubResource("StandardMaterial3D_qrcx8")
+
+[node name="Wall_North" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.6286, 4.16187, 0.393792)
+use_collision = true
+size = Vector3(22.2876, 5.12842, 0.833861)
+material = SubResource("StandardMaterial3D_qrcx8")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1973, 6.659, 4.46397)
+layers = 3
+light_color = Color(0.901961, 0.6, 0, 1)
+light_energy = 5.4
+light_indirect_energy = 7.363
+light_volumetric_fog_energy = 0.0
+light_size = 1.0
+light_specular = 1.94
+shadow_enabled = true
+shadow_reverse_cull_face = true
+omni_range = 12.746
+omni_attenuation = 1.62451
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/OmniLight3D"]
+layers = 524288
+mesh = SubResource("SphereMesh_qpcap")
+skeleton = NodePath("")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.137047, 3.81831, -7.97512)
+layers = 3
+light_color = Color(0.901961, 0.6, 0, 1)
+light_energy = 5.4
+light_indirect_energy = 7.363
+light_volumetric_fog_energy = 0.0
+light_size = 1.0
+light_specular = 1.94
+shadow_enabled = true
+shadow_reverse_cull_face = true
+omni_range = 12.746
+omni_attenuation = 1.62451
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/OmniLight3D2"]
+layers = 524288
+mesh = SubResource("SphereMesh_qpcap")
+skeleton = NodePath("")
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.137047, 16.3429, -0.383874)
+layers = 3
+light_color = Color(0.764706, 0.670588, 1, 1)
+light_energy = 5.4
+light_indirect_energy = 7.363
+light_volumetric_fog_energy = 0.0
+light_size = 1.0
+light_specular = 1.94
+shadow_enabled = true
+shadow_reverse_cull_face = true
+omni_range = 89.436
+omni_attenuation = 0.683022
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/OmniLight3D3"]
+layers = 524288
+mesh = SubResource("SphereMesh_qpcap")
+skeleton = NodePath("")
+
+[node name="Prop" type="Node3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.10071, 3.0371, 0.800355)
+
+[node name="ModelSword" type="MeshInstance3D" parent="Map/Prop"]
+transform = Transform3D(-0.981313, 0, -0.192419, 0, 1, 0, 0.192419, 0, -0.981313, -0.159558, -0.206376, -0.729333)
+mesh = ExtResource("5_f5q2f")
+skeleton = NodePath("../../..")
+
+[node name="Prop2" type="Node3D" parent="Map"]
+transform = Transform3D(0.947339, 0, 0.320233, 0, 1, 0, -0.320233, 0, 0.947339, 5.63241, 3.0371, 6.01571)
+
+[node name="ModelSword" type="MeshInstance3D" parent="Map/Prop2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.159554, -0.206375, 0.540356)
+mesh = ExtResource("5_f5q2f")
+skeleton = NodePath("../../..")
+
+[node name="Prop3" type="Node3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14675, 2.81693, -4.79283)
+
+[node name="ModelSaber" type="MeshInstance3D" parent="Map/Prop3"]
+mesh = ExtResource("4_5q4w8")
+skeleton = NodePath("../../..")
+
+[node name="HP_Vial" parent="Map" instance=ExtResource("5_2pw1b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95907, 2.45547, -4.15294)
+
+[node name="HP_Vial" parent="." instance=ExtResource("7_6jjqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20664, 2.42729, -4.55747)
+
+[node name="level_select_panel" parent="." instance=ExtResource("2_im3ty")]
+transform = Transform3D(0.99939, 0.0349344, 0, 1.52703e-09, -4.36847e-08, 1, 0.0349344, -0.99939, -4.37114e-08, -13.5069, 3.72263, 7.09253)
+level_name = "main"
+
+[node name="level_select_panel2" parent="." instance=ExtResource("2_im3ty")]
+transform = Transform3D(0.99939, 0.0349344, 0, 1.52703e-09, -4.36847e-08, 1, 0.0349344, -0.99939, -4.37114e-08, -13.5069, 3.72263, 4.64384)
+level_name = "obstacle_course"
+
+[node name="level_select_panel3" parent="." instance=ExtResource("2_im3ty")]
+transform = Transform3D(0.99939, 0.0349344, 0, 1.52703e-09, -4.36847e-08, 1, 0.0349344, -0.99939, -4.37114e-08, -13.5069, 3.72263, 2.11424)
+level_name = "pickup_testing_world"
+
+[node name="level_select_panel4" parent="." instance=ExtResource("2_im3ty")]
+transform = Transform3D(0.99939, 0.0349344, 0, 1.52703e-09, -4.36847e-08, 1, 0.0349344, -0.99939, -4.37114e-08, -13.5069, 3.72263, -0.399962)
+level_name = "utm"
+
+[node name="Player" parent="." instance=ExtResource("3_qe8im")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00755, 2.76221, 2.79121)
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_rd12v")]
+
+[node name="SampleEnemy" parent="." instance=ExtResource("10_0bcta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.87717, 8.92682, 6.91659)
+
+[node name="ModelMachete" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.209035, -1.0079, 1.48853, -0.0965879, 1.4901, 1.02253, -1.79506, -0.197549, 0.118319, 4.88502, 2.94767, 5.3709)
+mesh = ExtResource("11_tw615")
