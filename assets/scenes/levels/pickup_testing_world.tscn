@@ -9,10 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://y47r134hbayo" path="res://assets/prefabs/pickups/shells_pickup.tscn" id="7_voddx"]
 [ext_resource type="PackedScene" uid="uid://0sr52yetd3i6" path="res://assets/prefabs/geo/kill_floor.tscn" id="8_6a5ga"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ubvh"]
-albedo_texture = ExtResource("1_vnwfo")
-uv1_triplanar = true
-
 [node name="pickupTestingWorld" type="Node3D"]
 
 [node name="Map" type="Node" parent="."]
@@ -20,7 +16,6 @@ uv1_triplanar = true
 [node name="Platform" type="CSGCylinder3D" parent="Map"]
 transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
 use_collision = true
-material = SubResource("StandardMaterial3D_6ubvh")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000870228, 33.1962, 0.090189)
